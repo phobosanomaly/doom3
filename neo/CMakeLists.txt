@@ -64,17 +64,17 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # precompiled libraries from the doom3-libs repo
-if(DHEWM3LIBS)
+if(DOOM3LIBS)
 	if(CMAKE_CROSSCOMPILING)
-		set(CMAKE_FIND_ROOT_PATH ${DHEWM3LIBS})
+		set(CMAKE_FIND_ROOT_PATH ${DOOM3LIBS})
 	else()
-		set(ENV{CMAKE_PREFIX_PATH} ${DHEWM3LIBS})
+		set(ENV{CMAKE_PREFIX_PATH} ${DOOM3LIBS})
 	endif()
 
 	# these are too stupid, give them a hint
-	set(ENV{OPENALDIR} ${DHEWM3LIBS})
-	set(ENV{SDLDIR} ${DHEWM3LIBS})
-	set(ENV{SDL2DIR} ${DHEWM3LIBS})
+	set(ENV{OPENALDIR} ${DOOM3LIBS})
+	set(ENV{SDLDIR} ${DOOM3LIBS})
+	set(ENV{SDL2DIR} ${DOOM3LIBS})
 endif()
 
 # libs
