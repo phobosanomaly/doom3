@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>dhewm3</string>
+	<string>doom3</string>
 	<key>CFBundleIconFile</key>
 	<string>Doom3.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.dhewg.dhewm3</string>
+	<string>org.dhewg.doom3</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

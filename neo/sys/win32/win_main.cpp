@@ -274,7 +274,7 @@ static int WPath2A(char *dst, size_t size, const WCHAR *src) {
 
 /*
 ==============
-Returns "My Documents"/My Games/dhewm3 directory (or equivalent - "CSIDL_PERSONAL").
+Returns "My Documents"/My Games/doom3 directory (or equivalent - "CSIDL_PERSONAL").
 To be used with Sys_DefaultSavePath(), so savegames, screenshots etc will be
 saved to the users files instead of systemwide.
 
@@ -295,7 +295,7 @@ static int GetHomeDir(char *dst, size_t size)
 	if (len == 0)
 		return 0;
 
-	idStr::Append(dst, size, "/My Games/dhewm3");
+	idStr::Append(dst, size, "/My Games/doom3");
 
 	return len;
 }

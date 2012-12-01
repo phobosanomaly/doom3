@@ -1762,7 +1762,7 @@ idModList *idFileSystemLocal::ListMods( void ) {
 	}
 
 	list->mods.Insert( "" );
-	list->descriptions.Insert( "dhewm 3" );
+	list->descriptions.Insert( "doom 3" );
 
 	assert( list->mods.Num() == list->descriptions.Num() );
 
