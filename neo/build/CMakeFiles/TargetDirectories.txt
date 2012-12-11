@@ -1,0 +1,3 @@
+/home/phobos/doom3/neo/build/CMakeFiles/base.dir
+/home/phobos/doom3/neo/build/CMakeFiles/doom3.dir
+/home/phobos/doom3/neo/build/CMakeFiles/idlib.dir

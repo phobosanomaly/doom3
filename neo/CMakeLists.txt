@@ -1,21 +1,6 @@
 project(doom3)
 cmake_minimum_required(VERSION 2.6)
 
-# TODO
-
-# osx: place game .dylib's in the bundle (next to the binary)
-# osx: -weak_framework ?
-
-# maybe add these as options:
-# TARGET_MONO
-# SETUP
-# SDK				-D_D3SDK
-
-# don't add these as options, but document them?
-# IDNET_HOST		-DIDNET_HOST=\\"%s\\"' % IDNET_HOST
-# DEBUG_MEMORY		-DID_DEBUG_MEMORY', '-DID_REDIRECT_NEWDELETE
-# LIBC_MALLOC		-DUSE_LIBC_MALLOC=0
-# ID_NOLANADDRESS	-DID_NOLANADDRESS
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/sys/cmake")
 set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip RPATH" FORCE)
@@ -26,9 +11,9 @@ include(GNUInstallDirs OPTIONAL RESULT_VARIABLE GNUINSTALLDIRS)
 
 option(CORE			"Build the core" ON)
 option(BASE			"Build the base game code" ON)
-option(D3XP			"Build the d3xp game code" ON)
+option(D3XP			"Build the d3xp game code" OFF)
 option(DEDICATED	"Build the dedicated server" OFF)
-option(ONATIVE		"Optimize for the host CPU" OFF)
+option(ONATIVE		"Optimize for the host CPU" ON)
 option(SDL2			"Use SDL2 instead of SDL1.2" OFF)
 
 if(NOT CMAKE_SYSTEM_PROCESSOR)
@@ -142,8 +127,8 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
 	set(CMAKE_C_FLAGS_DEBUG "-g -D_DEBUG -O1")
 	set(CMAKE_C_FLAGS_DEBUGALL "-g -ggdb -D_DEBUG")
 	set(CMAKE_C_FLAGS_PROFILE "-g -ggdb -D_DEBUG -O1 -fno-omit-frame-pointer")
-	set(CMAKE_C_FLAGS_RELEASE "-O3 -ffast-math -fno-unsafe-math-optimizations -fomit-frame-pointer")
-	set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -O3 -ffast-math -fno-unsafe-math-optimizations -fomit-frame-pointer")
+	set(CMAKE_C_FLAGS_RELEASE "-O2 -ffast-math -fno-unsafe-math-optimizations -fomit-frame-pointer")
+	set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -O2 -ffast-math -fno-unsafe-math-optimizations")
 	set(CMAKE_C_FLAGS_MINSIZEREL "-Os -ffast-math -fno-unsafe-math-optimizations -fomit-frame-pointer")
 
 	set(CMAKE_CXX_FLAGS_DEBUGALL ${CMAKE_C_FLAGS_DEBUGALL})
@@ -197,7 +182,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
 
 		set(sys_libs ${sys_libs} "-framework Carbon -framework Cocoa -framework IOKit")
 	elseif(WIN32)
-		set(ldflags "${ldflags} -static-libgcc -static-libstdc++")
+		set(ldflags "${ldflags} -Wl,-O1 -Wl,--as-needed")
 	else()
 		if(os STREQUAL "linux")
 			set(sys_libs ${sys_libs} dl)
